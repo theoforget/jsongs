@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> JSON Song List </title>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <style>
+        .showSongs {
+            display: grid;
+            grid-template-columns: 48% 48%;
+            grid-row-gap: 15px;
+            padding-left: 5%;
+            padding-top: 5%;
+            padding-right: 5%;
+            grid-column-gap: 5%;
+        }
+        .eachSong {
+            display:grid;
+            justify-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-style: dotted;
+        }
+        .artist {
+            font-family: Comic Sans MS;
+            font-weight: bold;
+            font-size: 18px;
+            color: LightCoral;
+        }
+        .title {
+            font-style: italic;
+            font-family: Comic Sans MS;
+            font-weight: bolder;
+            font-size: 22px;
+            color: #320505;
+        }
+        .genre {
+            font-family: Comic Sans MS;
+            font-size: 15px;
+            color: grey;
+        }
+        .year {
+            font-family: Comic Sans MS;
+            font-size: 15px;
+            color: grey;
+        }
+        .box {
+            background-color: white;
+            width: 50%;
+            min-width: 300px;
+            border: 15px solid #320505;
+            align: justify;
+            font-family: Gill Sans, sans-serif;
+            color: #320505;
+            font-size: 40px;
+            padding: 40px;
+            margin: 20px;
+        }
+        .button {
+            background-color: #320505;
+            width: 60px;
+            height: 50px;
+            font-family: Comic Sans MS;
+            color: white;
+            border: 10px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-color: #FFE9E9">
+    <center>
+        <div class="box">
+            Welcome to the JSON Song List<br>
+        </div>
+        <div class="box" id="result1" style="font-size: 20px">
+            <!--part 2 goes here-->
+        </div> 
+        <div class="box" id="result2" style="font-size: 20px">
+            <!--part 3 goes here-->
+        </div>
+        <div class="box"> <!--box for part4-->
+            <form>
+                <label for="genres" style="font-size: 30px">
+                    Select a genre:
+                </label>
+                    <select name="genres" id="genrelist"
+                            style="font-size: 20px; font-family:Comic Sans MS">
+                    </select>
+            </form>
+            <button class="button" onclick="displaygenre()">
+                Filter
+            </button>
+            <div id="chosen" style="font-size: 20px; font-family:Comic Sans MS">
+                <!--filtered song titles go here-->
+            </div>
+        </div>
+        <script type = "text/javascript">
+            var dataSong;
+            $.getJSON("https://theoforget.github.io/jsongs/content.json",
+                      function(result) {
+                /* part 2 */
+                var strSong = JSON.stringify(result);
+                $('#result1').html(strSong);
+                /* part 3 */
+                dataSong = JSON.parse(strSong);
+                for (i = 0; i < 10; i++) {
+                    $('#result2').append("<div class='eachSong'>" +
+                        "<div class='artist'>" + dataSong[i].artist + "</div>" + 
+                        "<div class='title'>" + dataSong[i].title + "</div>" + 
+                        "<div class='genre'>" + dataSong[i].genre + "</div>" + 
+                        "<div class='year'>" + dataSong[i].year + "</div>" + 
+                        "</div>");
+                }
+                /* part 4 */
+                const genreList = [];
+                for (i = 0; i < 10; i++) {
+                    for (j = 0; j < dataSong[i].genre.length; j++) {
+                        if (genreList.includes(dataSong[i].genre[j]) == false) {
+                            genreList.push(dataSong[i].genre[j]);
+                        }
+                    }
+                }
+                for (i = 0; i < genreList.length; i++) {
+                    $('#genrelist').append("<option value='" + genreList[i] + 
+                                           "'>" + genreList[i] + "</option>");
+                }
+            });
+            function displaygenre() {
+                var chosen = document.getElementById('genrelist').value; 
+                $('#chosen').html("<br>");
+                for (i = 0; i < 10; i++) {
+                    if (dataSong[i].genre.includes(chosen)) {
+                        $('#chosen').append(dataSong[i].title + "<br>");
+                    }
+                }
+            }
+        </script>
+    </center>
+</body>
+</html>
