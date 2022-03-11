@@ -1,0 +1,62 @@
+[
+    {
+        "artist": "Jack Harlow",
+        "title": "Tyler Herro",
+        "genre": ["Hip-Hop/Rap"],
+        "year": 2020
+    },
+    {
+        "artist": "Doja Cat",
+        "title": "Get Into It (Yuh)",
+        "genre": ["Hip-Hop/Rap", "Pop"],
+        "year": 2021
+    },
+    {
+        "artist": "Outkast",
+        "title": "So Fresh, So Clean",
+        "genre": ["R&B/Soul", "Hip-Hop/Rap", "Pop"],
+        "year": 2000
+    },
+    {
+        "artist": "Lil Keed",
+        "title": "Snake",
+        "genre": ["Hip-Hop/Rap"],
+        "year": 2019
+    },
+    {
+        "artist": "2Pac",
+        "title": "Do For Love",
+        "genre": ["R&B/Soul", "Hip-Hop/Rap"],
+        "year": 1998
+    },
+    {
+        "artist": "JAY-Z",
+        "title": "The Story of O.J.",
+        "genre": ["Hip-Hop/Rap"],
+        "year": 2017
+    },
+    {
+        "artist": "George Benson",
+        "title": "Give Me The Night",
+        "genre": ["R&B/Soul", "Pop"],
+        "year": 2017
+    },
+    {
+        "artist": "Earth, Wind & Fire",
+        "title": "September",
+        "genre": ["R&B/Soul"],
+        "year": 2017
+    },
+    {
+        "artist": "Kanye West",
+        "title": "Runaway",
+        "genre": ["Hip-Hop/Rap"],
+        "year": 2010
+    },
+    {
+        "artist": "Dua Lipa, Angèle",
+        "title": "Fever",
+        "genre": ["Pop"],
+        "year": 2021
+    }
+]
